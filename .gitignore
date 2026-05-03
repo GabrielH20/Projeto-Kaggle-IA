@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+ArquivosAulas/
+*.pyc
+.env
+.kaggle/
+wandb/
+dados_limpos.csv
+feature_engeneering_dados.csv

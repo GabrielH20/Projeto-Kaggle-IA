@@ -1,0 +1,23 @@
+# config/config.yaml
+data:
+  raw_path: "data/raw/kag_risk_factors_cervical_cancer.csv"
+  test_size: 0.2
+  random_state: 42
+  target_col: "Biopsy"
+  missing_threshold: 0.5
+  imputation_strategy: "median"
+
+model:
+  #Capcity of learning, but if have few neurons, dont can learning complex pattern, but if have too much, only will memorize the model
+  hidden_sizes: [64, 32]  
+  #Shut down 20% neurons of way random, anti-overfitting
+  dropout: 0.2 
+  #Learning_rate, self explain, but if the number are much lower, will take so much time for finishing
+  learning_rate: 0.001
+  #The model dont can look for all dates, so we reduce for 32 paramets of each time, if this number is more high or much lower, can have 
+  #benefits and drawbacks
+  batch_size: 32
+  epochs: 100
+  #early_stopping_patience, dont can the model pass much time repeting itself withouth upgrade, stoping when the dates dont changed
+  early_stopping_patience: 10
+
