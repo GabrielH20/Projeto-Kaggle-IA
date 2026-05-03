@@ -9,6 +9,5 @@ temp_clean.csv
 temp_raw.csv
 temp_selected_features.csv
 temp_test.csv
-dados_limpos.csv
 feature_engenering_dados.csv
 temp_train.csv
