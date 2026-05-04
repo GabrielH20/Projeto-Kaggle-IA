@@ -124,7 +124,7 @@ def train_model(config, train_loader, test_loader, input_dim):
     return model
 
 def training_save_model(config):
-    wandb.init(project="cervical-cancer-analysis", job_type="train", name="mlp_training", config=config)
+    wandb.init(project="cervical-cancer-analysis", job_type="train", name="test", config=config)
 
     train_df = pd.read_csv("temp_train.csv")
     test_df = pd.read_csv("temp_test.csv")
