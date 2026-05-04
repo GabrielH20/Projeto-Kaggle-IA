@@ -64,7 +64,7 @@ The dataset contains risk factors for cervical cancer including:
 - Loss
 
 # Results
-<img width="179" height="224" alt="{AF67D620-FA63-4950-8E61-27FA6A11A5FC}" src="https://github.com/user-attachments/assets/9b0210b4-06cf-4707-b856-8c3473379829" />
+<img width="136" height="120" alt="{754D6957-EBDF-46D0-80CE-F1A765FC4EE9}" src="https://github.com/user-attachments/assets/ffdb21ef-4e93-4487-9e87-132d42752c03" />
 
 # How Reproduce the Results
 
