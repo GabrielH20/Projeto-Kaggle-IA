@@ -100,14 +100,15 @@ def train_model(config, train_loader, test_loader, input_dim):
             best_loss = val_loss
             counter = 0
             torch.save(model.state_dict(), "best_model.pt")
-            model_artifact = wandb.Artifact("trained_model", type="model")
-            model_artifact.add_file("best_model.pt")
-            wandb.log_artifact(model_artifact)
+
         else:
             counter += 1
             if counter >= patience:
                 print(f"Early stopping triggered at epoch {epoch}")
                 break
+    model_artifact = wandb.Artifact("trained_model", type="model")
+    model_artifact.add_file("best_model.pt")
+    wandb.log_artifact(model_artifact)    
     
     cm = confusion_matrix(all_labels, all_preds)
     plt.figure(figsize=(6, 5))

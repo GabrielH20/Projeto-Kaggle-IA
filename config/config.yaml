@@ -9,11 +9,11 @@ data:
 
 model:
   #Capcity of learning, but if have few neurons, dont can learning complex pattern, but if have too much, only will memorize the model
-  hidden_sizes: [64, 32]  
-  #Shut down 20% neurons of way random, anti-overfitting
-  dropout: 0.2 
+  hidden_sizes: [64,32,16]  
+  #Shut down 30% neurons of way random, anti-overfitting
+  dropout: 0.3
   #Learning_rate, self explain, but if the number are much lower, will take so much time for finishing
-  learning_rate: 0.001
+  learning_rate: 0.0005
   #The model dont can look for all dates, so we reduce for 32 paramets of each time, if this number is more high or much lower, can have 
   #benefits and drawbacks
   batch_size: 32
