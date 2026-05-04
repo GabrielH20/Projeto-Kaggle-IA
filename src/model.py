@@ -5,12 +5,12 @@ class MLP(nn.Module):
         super().__init__()
         layers = []
         prev = input_dim
-        for h in hidden_sizes:
+        for h in hidden_sizes: # hidden_sizes = [64, 32]
             layers.append(nn.Linear(prev, h))
             layers.append(nn.ReLU())
             layers.append(nn.Dropout(dropout))
             prev = h
-        layers.append(nn.Linear(prev, output_dim))
+        layers.append(nn.Linear(prev, output_dim)) # output_dim = 1
         self.net = nn.Sequential(*layers)
 
     def forward(self, x):

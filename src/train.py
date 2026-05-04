@@ -11,6 +11,9 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import precision_score
 from src.model import MLP
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 def prepare_dataloaders(train_df, test_df, target_col, batch_size):
     X_train = train_df.drop(columns=[target_col]).values.astype(np.float32)
@@ -70,7 +73,7 @@ def train_model(config, train_loader, test_loader, input_dim):
                 #Vall_loss need for see dates what not are see, if her be too much high than train_loss, mean that model is only remenber the train ago
                 val_loss += loss.item() * X_batch.size(0) 
                 
-                threshold = 0.3
+                threshold = 0.2
                 pred = (torch.sigmoid(output) > threshold   ).float()
                 probs = torch.sigmoid(output)
                 correct += (pred == y_batch).sum().item()
@@ -105,6 +108,16 @@ def train_model(config, train_loader, test_loader, input_dim):
             if counter >= patience:
                 print(f"Early stopping triggered at epoch {epoch}")
                 break
+    
+    cm = confusion_matrix(all_labels, all_preds)
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.title('Confusion Matrix')
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+        
+    wandb.log({f"confusion_matrix - epoch {epoch}": wandb.Image(plt)})
+    plt.close()
 
     model.load_state_dict(torch.load("best_model.pt"))
     return model

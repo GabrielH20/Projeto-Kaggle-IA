@@ -8,10 +8,8 @@ def load_config(path="config/config.yaml"):
         return yaml.safe_load(f)
 
 def main():
-    config = load_config()
-
+    config = load_config()  
     set_seed(config['data']['random_state'])
-    wandb.login()
     df_features = run_pipeline(config)
 
 if __name__ == "__main__":
